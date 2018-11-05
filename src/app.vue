@@ -13,12 +13,12 @@ import Footer from './common/footer.jsx'
 import Todo from './views/todo/todo.vue'
 
 export default {
-    // 声明引入的组件
-        components: {
-            Header,
-            Footer,
-            Todo
-        }
+  // 声明引入的组件
+  components: {
+    Header,
+    Footer,
+    Todo
+  }
 }
 </script>
 
