@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.client.js --mode development",
+    "clean": "rimraf dist",
+    "build:client": "cross-env NODE_ENV=production webpack --config config/webpack.config.client.js --mode development",
+    "build": "npm run clean && npm run build:client",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.config.client.js --mode development"
   },
   "author": "",
@@ -28,6 +30,7 @@
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
     "postcss-loader": "^3.0.0",
+    "rimraf": "^2.6.2",
     "style-loader": "^0.23.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
@@ -35,7 +38,7 @@
     "vue-loader": "^15.4.2",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.5.17",
-    "webpack": "^4.23.1",
+    "webpack": "^4.25.0",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",
     "webpack-merge": "^4.1.4"
