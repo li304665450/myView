@@ -13,12 +13,12 @@ const config = {
   },
   module: {
     rules: [
-    //   {
-    //     test: /\.(vue|js|jsx)$/,
-    //     loader: 'eslint-loader',
-    //     exclude: /node_modules/,
-    //     enforce: 'pre'
-    //   },
+      {
+        test: /\.(vue|js|jsx)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        enforce: 'pre'
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -29,9 +29,9 @@ const config = {
         loader: 'babel-loader'
       },
       // {
-      //     test: /\.js$/,
-      //     loader: 'babel-loader',
-      //     exclude: "../node_modules/"
+      //   test: /\.js$/,
+      //   loader: 'babel-loader',
+      //   exclude: /node_modules/
       // },
       {
         test: /\.(img|jpg|jpeg|png|gif|svg)$/,
