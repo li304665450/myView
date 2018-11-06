@@ -51,15 +51,13 @@ if (isDev) {
     },
     devServer,
     plugins: defaultPluins.concat([
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoEmitOnErrorsPlugin()
+      new webpack.HotModuleReplacementPlugin()
     ])
   })
 } else { // production 生产环境
   config = marage(baseConfig, {
     entry: {
-      app: path.join(__dirname, '../src/main.js'),
-      vendor: ['vue']
+      app: path.join(__dirname, '../src/main.js')
     },
     output: {
       filename: '[name].[chunkhash:8].js'

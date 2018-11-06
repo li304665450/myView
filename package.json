@@ -8,10 +8,10 @@
     "clean": "rimraf dist",
     "lint": "eslint --ext .js --ext .jsx --ext .vue src/",
     "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue src/",
-    "build:client": "cross-env NODE_ENV=production webpack --config config/webpack.config.client.js --mode development",
+    "build:client": "cross-env NODE_ENV=production webpack --config config/webpack.config.client.js",
     "build": "npm run clean && npm run build:client",
-    "precommit": "npm run lint",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.config.client.js --mode development"
+    "precommit": "npm run lint-fix",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.config.client.js"
   },
   "author": "",
   "license": "ISC",
