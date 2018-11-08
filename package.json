@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf dist",
+    "practice": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.config.practice.js",
     "lint": "eslint --ext .js --ext .jsx --ext .vue src/",
     "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue src/",
     "build:client": "cross-env NODE_ENV=production webpack --config config/webpack.config.client.js",
