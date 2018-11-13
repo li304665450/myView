@@ -6,7 +6,7 @@ const baseConfig = require('./webpack.config.base')
 const marage = require('webpack-merge')
 
 const devServer = {
-  port: 8001,
+  port: 8080,
   host: '0.0.0.0',
   overlay: {
     errors: true

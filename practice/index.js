@@ -1,1 +1,5 @@
-import './instance/index.js'
+// import './instance/index.js'
+// import './lifecycle'
+// import './data-binding'
+// import './computed'
+import './directive'
