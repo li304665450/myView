@@ -1,13 +1,33 @@
-import Todo from '../views/todo/todo.vue'
-import Login from '../views/login/login.vue'
+// import Todo from '../views/todo/todo.vue'
+// import Login from '../views/login/login.vue'
 
 export default [
   {
     path: '/',
-    component: Todo
+    redirect: '/app'
+  },
+  {
+    path: '/app/:id',
+    props: true,
+    component: () => import('../views/todo/todo.vue'),
+    name: 'app',
+    meta: {
+      title: 'App',
+      description: 'asdasd'
+    },
+    beforeEnter (to, from, next) {
+      console.log('app route before enter')
+      next()
+    }
+    // children: [
+    //   {
+    //     path: 'test',
+    //     component: Login
+    //   }
+    // ]
   },
   {
     path: '/login',
-    component: Login
+    component: () => import('../views/login/login.vue')
   }
 ]
