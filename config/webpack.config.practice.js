@@ -22,7 +22,7 @@ const defaultPluins = [
     }
   }),
   new HtmlPlugin({
-    template: path.join(__dirname, '../practice/template.html')
+    template: path.join(__dirname, 'template.html')
   })
 ]
 

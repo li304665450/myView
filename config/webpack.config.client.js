@@ -24,13 +24,14 @@ const defaultPluins = [
       NODE_ENV: isDev ? '"development"' : '"production"'
     }
   }),
-  new HtmlPlugin()
+  new HtmlPlugin({
+    template: path.join(__dirname, 'template.html')
+  })
 ]
 
 let config
 
-// development  开发环境
-if (isDev) {
+if (isDev) { // development  开发环境
   config = marage(baseConfig, {
     devtool: '#cheap-module-eval-source-map',
     module: {
