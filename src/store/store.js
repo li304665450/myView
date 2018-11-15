@@ -14,6 +14,11 @@ export default () => {
     mutations: mutations,
     getters: getters,
     actions: actions
+    // plugins: [
+    //   (store) => {
+    //     console.log('my plugin invoked')
+    //   }
+    // ]
     // modules: {
     //   a: {
     //     namespaced: true,

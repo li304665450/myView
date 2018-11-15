@@ -19,6 +19,23 @@ store.registerModule('c', {
   }
 })
 
+// store.unregisterModule('c') //解绑state.model
+
+// store.watch(
+//   (state) => state.count + 1,
+//   (newCount) => console.log(newCount)
+// )
+
+store.subscribe((mutations, state) => {
+  console.log(mutations.type)
+  console.log(mutations.payload)
+})
+
+store.subscribeAction((action, state) => {
+  console.log(action.type)
+  console.log(action.payload)
+})
+
 router.beforeEach((to, from, next) => {
   console.log('before each invoked')
   next()
