@@ -9,7 +9,8 @@ const config = {
   entry: path.join(__dirname, '../src/main.js'),
   output: {
     filename: 'bundel.[hash:8].js',
-    path: path.join(__dirname, '../dist')
+    path: path.join(__dirname, '../dist'),
+    publicPath: 'http://1270.0.1:8000/public/'
   },
   module: {
     rules: [
