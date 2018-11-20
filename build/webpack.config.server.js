@@ -4,6 +4,7 @@ const baseConfig = require('./webpack.config.base')
 const marage = require('webpack-merge')
 const ExtractPlugin = require('extract-text-webpack-plugin')
 const VueServerPlugin = require('vue-server-renderer/server-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 let config
 
@@ -42,7 +43,8 @@ config = marage(baseConfig, {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
       'process.env.VUE_ENV': 'server'
     }),
-    new VueServerPlugin()
+    new VueServerPlugin(),
+    new VueLoaderPlugin()
   ]
 })
 

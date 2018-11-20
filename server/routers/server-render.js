@@ -6,7 +6,7 @@ module.exports = async (ctx, renderer, template) => {
   const context = { url: ctx.path }
 
   try {
-    const appString = await renderer.rendererToString(context)
+    const appString = await renderer.renderToString(context)
 
     const html = ejs.render(template, {
       appString,
@@ -14,9 +14,9 @@ module.exports = async (ctx, renderer, template) => {
       scripts: context.renderScripts()
     })
 
-    context.body = html
+    ctx.body = html
   } catch (err) {
-    console.log(err)
+    console.log('render error', err)
     throw err
   }
 }

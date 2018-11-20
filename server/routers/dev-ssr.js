@@ -10,7 +10,7 @@ const serverRender = require('./server-render')
 const serverConfig = require('../../build/webpack.config.server')
 
 const serverCompiler = webpack(serverConfig)
-const mfs = MemoryFS()
+const mfs = new MemoryFS()
 serverCompiler.outputFileSystem = mfs
 
 let bundle
@@ -30,15 +30,14 @@ serverCompiler.watch({}, (err, stats) => {
 
 const handleSSR = async (ctx) => {
   if (!bundle) {
-    ctx.body = '你等一会，别着急.....'
+    ctx.body = '你等一会，别着急......'
     return
   }
 
   const clientManifestResp = await axios.get(
     'http://127.0.0.1:8000/vue-ssr-client-manifest.json'
   )
-
-  const clientManifest = clientManifestResp()
+  const clientManifest = clientManifestResp.data
 
   const template = fs.readFileSync(
     path.join(__dirname, '../server.template.ejs'),
