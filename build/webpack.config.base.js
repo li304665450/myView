@@ -6,10 +6,10 @@ const isDev = process.env.NODE_ENV === 'development'
 const config = {
   mode: process.env.NODE_ENV,
   target: 'web',
-  entry: path.join(__dirname, '../src/main.js'),
+  entry: path.join(__dirname, '../client/src-entry.js'),
   output: {
     filename: 'bundel.[hash:8].js',
-    path: path.join(__dirname, '../dist'),
+    path: path.join(__dirname, '../public'),
     publicPath: 'http://127.0.0.1:8000/public/'
   },
   module: {

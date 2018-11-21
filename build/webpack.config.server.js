@@ -11,7 +11,7 @@ let config
 // development  开发环境
 config = marage(baseConfig, {
   target: 'node',
-  entry: path.join(__dirname, '../src/server-entry.js'),
+  entry: path.join(__dirname, '../client/server-entry.js'),
   devtool: 'source-map',
   output: {
     libraryTarget: 'commonjs2',

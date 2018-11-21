@@ -63,10 +63,11 @@ if (isDev) { // development  开发环境
 } else { // production 生产环境
   config = marage(baseConfig, {
     entry: {
-      app: path.join(__dirname, '../src/main.js')
+      app: path.join(__dirname, '../client/src-entry.js')
     },
     output: {
-      filename: '[name].[chunkhash:8].js'
+      filename: '[name].[chunkhash:8].js',
+      publicPath: '/public/'
     },
     module: {
       rules: [{
@@ -87,7 +88,11 @@ if (isDev) { // development  开发环境
       }]
     },
     plugins: defaultPluins.concat([
-      new ExtractPlugin('styles.[hash:8].css')
+      // new ExtractPlugin('styles.[hash:8].css')
+      new ExtractPlugin({
+        filename: 'styles.[hash:8].css',
+        allChunks: true
+      })
     ]),
     optimization: {
       splitChunks: {

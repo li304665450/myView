@@ -27,6 +27,9 @@ import Footer from './common/footer.jsx'
 // import Todo from './views/todo/todo.vue'
 
 export default {
+  metaInfo: {
+    title: 'Mars Todo App'
+  },
   // 声明引入的组件
   components: {
     Header,
