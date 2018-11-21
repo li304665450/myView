@@ -38,13 +38,17 @@ config = marage(baseConfig, {
     }]
   },
   plugins: [
-    new ExtractPlugin('styles.[hash:8].css'),
+    // new ExtractPlugin('styles.[hash:8].css'),
+    new ExtractPlugin({
+      filename: 'styles.[hash:8].css',
+      allChunks: true
+    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
       'process.env.VUE_ENV': 'server'
     }),
-    new VueServerPlugin(),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new VueServerPlugin()
   ]
 })
 
