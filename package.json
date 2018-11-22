@@ -21,7 +21,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/preset-env": "^7.1.6",
     "acorn": "^6.0.4",
     "axios": "^0.18.0",
     "ejs": "^2.6.1",

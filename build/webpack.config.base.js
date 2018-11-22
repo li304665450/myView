@@ -32,10 +32,7 @@ const config = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
-        options: {
-          presets: ['@babel/preset-env']
-        }
+        exclude: /node_modules/
       },
       {
         test: /\.(img|jpg|jpeg|png|gif|svg)$/,
