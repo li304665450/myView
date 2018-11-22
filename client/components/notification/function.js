@@ -8,16 +8,10 @@ let seed = 1
 
 const removeInstance = (instance) => {
   if (!instance) return
-  console.log('before:', instances)
   const len = instances.length
-  const index = instances.findIndex(inst => instance === inst.id)
-  console.log('after:', instances)
-  console.log(instance)
-  console.log(len)
-  console.log(index)
+  const index = instances.findIndex(inst => instance.id === inst.id)
 
   instances.splice(index, 1)
-  console.log(instances)
 
   if (len <= 1) return
   const removeHeight = instance.vm.height
@@ -56,7 +50,6 @@ const notify = (options) => {
   verticalOffset += 16
   instance.verticalOffset = verticalOffset
   instances.push(instance)
-  console.log(instances)
   instance.vm.$on('closed', () => {
     removeInstance(instance)
     document.body.removeChild(instance.vm.$el)
