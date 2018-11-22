@@ -1,5 +1,10 @@
 <template>
 	<section class="real-app">
+    <tabs value="1">
+      <tab lavel="tab1" index="1" />
+      <tab index="2"><span slot="label" style="color:red">tab2</span></tab>
+      <tab lavel="tab3" index="3" />
+    </tabs>
 		<input
         type="text"
 		class="add-input"

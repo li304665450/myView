@@ -6,7 +6,7 @@ const isDev = process.env.NODE_ENV === 'development'
 const config = {
   mode: process.env.NODE_ENV,
   target: 'web',
-  entry: path.join(__dirname, '../client/src-entry.js'),
+  entry: path.join(__dirname, '../client/client-entry.js'),
   output: {
     filename: 'bundel.[hash:8].js',
     path: path.join(__dirname, '../public'),
@@ -28,6 +28,14 @@ const config = {
       {
         test: /\.jsx$/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        options: {
+          presets: ['@babel/preset-env']
+        }
       },
       {
         test: /\.(img|jpg|jpeg|png|gif|svg)$/,
