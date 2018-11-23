@@ -4,7 +4,7 @@ const axios = require('axios')
 const className = 'todo'
 
 const request = axios.create({
-  baseUrl: 'https://d.apicloud.com/mcm/api'
+  baseURL: 'https://d.apicloud.com/mcm/api'
 })
 
 const createError = (code, resp) => {
@@ -31,9 +31,17 @@ module.exports = (appId, appKey) => {
   }
   return {
     async getAllTodos () {
-      return handleRequest(await request.get(`/${className}`, {
-        header: getHeaders
-      }))
+      return handleRequest(await request.get(
+        `/${className}`,
+        { headers: getHeaders() }
+      ))
+    },
+    async addTodo (todo) {
+      return handleRequest(await request.post(
+        `/${className}`,
+        todo,
+        { headers: getHeaders() }
+      ))
     }
   }
 }
