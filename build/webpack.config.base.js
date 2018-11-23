@@ -26,14 +26,16 @@ const config = {
         options: createVueLoaderOptions(isDev)
       },
       {
-        test: /\.jsx$/,
-        loader: 'babel-loader'
-      },
-      {
-        test: /\.js$/,
+        test: /\.(jsx)$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /(node_modules)/,
+        include: path.join(__dirname, '../client')
       },
+      // {
+      //   test: /\.js$/,
+      //   loader: 'babel-loader',
+      //   exclude: /node_modules/
+      // },
       {
         test: /\.(img|jpg|jpeg|png|gif|svg)$/,
         use: [
