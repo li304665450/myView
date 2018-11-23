@@ -3,7 +3,7 @@ const Router = require('koa-router')
 const userRouter = new Router({ prefix: '/user' })
 
 userRouter
-  .post('./login', async ctx => {
+  .post('/login', async ctx => {
     const user = ctx.request.body
     if (user.username === 'Mars' && user.password === '123456') {
       ctx.session.user = {
@@ -23,3 +23,5 @@ userRouter
       }
     }
   })
+
+module.exports = userRouter

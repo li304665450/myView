@@ -5,11 +5,13 @@ const apiRouter = new Router({ prefix: '/api' })
 const validateUser = async (ctx, next) => {
   if (!ctx.session.user) {
     ctx.status = 401
-    ctx.body = 'no login'
+    ctx.body = 'need login'
   } else {
     await next()
   }
 }
+
+apiRouter.use(validateUser)
 
 const successResponse = (data) => {
   return {
@@ -19,7 +21,7 @@ const successResponse = (data) => {
 }
 
 apiRouter
-  .get('/todos', validateUser, async (ctx) => {
+  .get('/todos', async (ctx) => {
     const todos = await ctx.db.getAllTodos()
     ctx.body = successResponse(todos)
   })
