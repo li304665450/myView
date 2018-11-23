@@ -42,6 +42,13 @@ module.exports = (appId, appKey) => {
         todo,
         { headers: getHeaders() }
       ))
+    },
+    async updateTodo (id, todo) {
+      return handleRequest(await request.post(
+        `/${className}/${id}`,
+        todo,
+        { headers: getHeaders() }
+      ))
     }
   }
 }

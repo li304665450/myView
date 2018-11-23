@@ -18,5 +18,9 @@ apiRouter
     const data = await ctx.db.addTodo(ctx.request.body)
     ctx.body = successResponse(data)
   })
+  .put('/todo/:id', async (ctx) => {
+    const data = await ctx.db.updateTodo(ctx.params.id, ctx.request.body)
+    ctx.body = successResponse(data)
+  })
 
 module.exports = apiRouter
