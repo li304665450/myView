@@ -29,10 +29,11 @@
 </template>
 
 <script>
+import {
+  mapState, mapActions
+} from 'vuex'
 import Item from './item.vue'
 import Tabs from './tabs.vue'
-
-let id = 0
 
 export default {
   metaInfo: {
@@ -53,9 +54,11 @@ export default {
     next()
   },
   props: ['id'],
+  mounted () {
+    this.fetchTodos()
+  },
   data () {
     return {
-      todos: [],
       filter: 'all'
     }
   },
@@ -64,6 +67,7 @@ export default {
     Tabs
   },
   computed: {
+    ...mapState(['todos']),
     filteredTodos () {
       if (this.filter === 'all') {
         return this.todos
@@ -73,14 +77,15 @@ export default {
     }
   },
   methods: {
-    addTodo (e) {
-      this.todos.unshift({
-        id: id++,
-        content: e.target.value.trim(),
-        completed: false
-      })
-      e.target.value = ''
-    },
+    ...mapActions(['fetchTodos']),
+    // addTodo (e) {
+    //   this.todos.unshift({
+    //     id: id++,
+    //     content: e.target.value.trim(),
+    //     completed: false
+    //   })
+    //   e.target.value = ''
+    // },
     deleteTodo (id) {
       this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1)
     },
