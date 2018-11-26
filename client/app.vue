@@ -1,6 +1,9 @@
 <template>
     <div id="app">
         <div id="cover"></div>
+        <div id="loading" v-show="loading">
+          <loading></loading>
+        </div>
         <Header></Header>
         <!-- <p>{{fullName}} {{counter}}</p> -->
         <!-- <router-link to="/app">App</router-link> -->
@@ -8,7 +11,7 @@
         <router-link to="/app/456">App456</router-link> -->
         <!-- <router-link to="/login">Login</router-link> -->
         <!-- <Todo></Todo> -->
-        <transition name="fade">
+        <transition name="fade" mode="out-in">
           <router-view/>
         </transition>
         <!-- <button @click="notify">click meff</button> -->
@@ -26,6 +29,7 @@ import {
 } from 'vuex'
 import Header from './common/header.vue'
 import Footer from './common/footer.jsx'
+import Loading from './components/loading/loading.vue'
 // import Todo from './views/todo/todo.vue'
 
 export default {
@@ -35,7 +39,8 @@ export default {
   // 声明引入的组件
   components: {
     Header,
-    Footer
+    Footer,
+    Loading
     // Todo
   },
   mounted () {
@@ -61,11 +66,12 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      counter: (state) => state.count
-      // textA: (state) => state.a.text,
-      // textC: (state) => state.c.text
-    }),
+    ...mapState(['loading']),
+    // ...mapState({
+    //   counter: (state) => state.count,
+    //   // textA: (state) => state.a.text,
+    //   // textC: (state) => state.c.text
+    // }),
     // count () {
     //   return this.$store.state.count
     // },
@@ -96,4 +102,16 @@ export default {
 			background-color #999
 			opacity .7
 			z-index -1
+  #loading{
+    position fixed
+    top 0
+    right 0
+    bottom 0
+    left 0
+    background-color rgba(255,255,255,.3)
+    z-index 99
+    display flex
+    align-items center
+    justify-content center
+  }
 </style>

@@ -58,6 +58,13 @@ export default {
   mounted () {
     this.fetchTodos()
   },
+  asyncData () {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(123)
+      }, 1000)
+    })
+  },
   data () {
     return {
       filter: 'all'
