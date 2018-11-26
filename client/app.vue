@@ -11,7 +11,7 @@
         <transition name="fade">
           <router-view/>
         </transition>
-        <button @click="notify">click meff</button>
+        <!-- <button @click="notify">click meff</button> -->
         <!-- <notification content="test notify" /> -->
         <Footer></Footer>
     </div>

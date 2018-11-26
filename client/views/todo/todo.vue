@@ -5,25 +5,26 @@
       <tab index="2"><span slot="label" style="color:red">tab2</span></tab>
       <tab lavel="tab3" index="3" />
     </tabs> -->
+     <Tabs
+      :filter="filter"
+      :todos="todos"
+      @toggle="toggleFilter"
+      @delAllCompleted='clearAllCompleted'
+    />
 		<input
         type="text"
 		class="add-input"
 		autofocus="autofocus"
 		placeholder="接下去要做什么？"
-		@keyup.enter="addTodo"
+		@keyup.enter="handleAdd"
 		>
-        <Item
-          :todo="todo"
-          v-for="todo in filteredTodos"
-          :key="todo.id"
-          @del="deleteTodo"
-        />
-        <Tabs
-         :filter="filter"
-         :todos="todos"
-         @toggle="toggleFilter"
-         @delAllCompleted='deleteAllCompleted'
-        />
+    <Item
+      :todo="todo"
+      v-for="todo in filteredTodos"
+      :key="todo.id"
+      @del="deleteTodo"
+      @toggle='toggleTodoState'
+    />
         <!-- <router-view/> -->
 	</section>
 </template>
@@ -77,23 +78,44 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['fetchTodos']),
-    // addTodo (e) {
-    //   this.todos.unshift({
-    //     id: id++,
-    //     content: e.target.value.trim(),
-    //     completed: false
-    //   })
-    //   e.target.value = ''
-    // },
-    deleteTodo (id) {
-      this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1)
+    ...mapActions([
+      'fetchTodos',
+      'addTodo',
+      'deleteTodo',
+      'updateTodo',
+      'deleteAllCompleted'
+    ]),
+    handleAdd (e) {
+      const content = e.target.value.trim()
+      if (!content) {
+        this.$notify({
+          content: '必须输入要做的内容'
+        })
+        return
+      }
+      const todo = {
+        content,
+        completed: false
+      }
+      this.addTodo(todo)
+      e.target.value = ''
     },
     toggleFilter (state) {
       this.filter = state
     },
-    deleteAllCompleted () {
-      this.todos = this.todos.filter(todo => !todo.completed)
+    // deleteTodo (id) {
+    //   this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1)
+    // },
+    toggleTodoState (todo) {
+      this.updateTodo({
+        id: todo.id,
+        todo: Object.assign({}, todo, {
+          completed: !todo.completed
+        })
+      })
+    },
+    clearAllCompleted () {
+      this.deleteAllCompleted()
     }
   }
 }

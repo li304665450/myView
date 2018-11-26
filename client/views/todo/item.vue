@@ -1,9 +1,10 @@
 <template>
 	<div :class="['todo-item',todo.completed ? 'completed' : '']">
-		<input 
+		<input
 		type="checkbox"
 		class="toggle"
-		v-model="todo.completed" 
+    :checked="todo.completed"
+		@click="handleToggle"
 		>
 		<label>{{todo.content}}</label>
 		<button class="destroy" @click="deleteTodo"></button>
@@ -21,6 +22,10 @@
   methods: {
     deleteTodo () {
       this.$emit('del', this.todo.id)
+    },
+    handleToggle (e) {
+      e.preventDefault()
+      this.$emit('toggle', this.todo)
     }
   }
 	}
@@ -62,13 +67,13 @@
         appearance none
     }
     .toggle:before{
-        content:url('../../assets/images/close-circle.svg')
+        content:url('../../assets/images/round.svg')
         position absolute
         left 12px
         cursor pointer
     }
     .toggle:checked:before{
-        content : url('../../assets/images/check-circle.svg')
+        content : url('../../assets/images/done.svg')
         position absolute
         left 12px
         cursor pointer
