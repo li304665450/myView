@@ -2,7 +2,7 @@ import axios from 'axios'
 import { createError } from './unitl'
 
 const request = axios.create({
-  baseURL: '/'
+  baseURL: process.env.VUE_ENV === 'server' ? 'http://127.0.0.1:3333/' : '/'
 })
 
 const handleRequest = (request) => {
@@ -17,6 +17,7 @@ const handleRequest = (request) => {
       }
       resolve(data.data)
     }).catch(err => {
+      console.log('-----------', err)
       const resp = err.response
       if (resp.status === 401) {
         reject(createError(401, 'need auth'))

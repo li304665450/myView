@@ -19,7 +19,7 @@ export default {
   },
   fetchTodos ({ commit }) {
     commit('startLoading')
-    model.getAllTodos()
+    return model.getAllTodos()
       .then(data => {
         commit('fillTodos', data)
         commit('endLoading')

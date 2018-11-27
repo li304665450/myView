@@ -58,12 +58,8 @@ export default {
   mounted () {
     this.fetchTodos()
   },
-  asyncData () {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(123)
-      }, 1000)
-    })
+  asyncData ({ store }) {
+    return store.dispatch('fetchTodos')
   },
   data () {
     return {
