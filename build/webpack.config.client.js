@@ -68,11 +68,11 @@ if (isDev) { // development  开发环境
 } else { // production 生产环境
   config = marage(baseConfig, {
     entry: {
-      app: path.join(__dirname, '../client/src-entry.js')
+      app: path.join(__dirname, '../client/client-entry.js')
     },
     output: {
-      filename: '[name].[chunkhash:8].js',
-      publicPath: '/public/'
+      filename: '[name].[chunkhash:8].js'
+      // publicPath: '/public/'
     },
     module: {
       rules: [{
@@ -120,6 +120,11 @@ if (isDev) { // development  开发环境
       runtimeChunk: true
     }
   })
+}
+config.resolve = {
+  alias: {
+    'model': path.join(__dirname, '../client/model/client-model.js')
+  }
 }
 
 module.exports = config
